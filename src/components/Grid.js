@@ -24,9 +24,31 @@ const Grid = ({ grid, handleCellClick }) => {
     flex: 0 0 auto;
     min-width: $size;
     color: rgba(0, 0, 0, 0);
+    background: ${props => {
+      switch (props.siblings) {
+        case 0:
+          return "#f0f0f0;";
+        case 1:
+          return "rgba(0, 0, 0, 0);";
+        case 2:
+          return "background: rgba(255, 255, 255, 0.5);";
+      }
+    }}
     border: 1px solid $border-color;
     box-sizing: border-box;
     user-select: none;
+    &:hover {
+      background: ${props => {
+        switch (props.siblings) {
+          case 0:
+            return "rgba(0,0,0,0.2);";
+          case 1:
+            return "rgba(0, 0, 0, 0);";
+          case 2:
+            return "background: rgba(255, 255, 255, 0.5);";
+        }
+      }}
+    }
   `;
 
   return (
@@ -34,12 +56,9 @@ const Grid = ({ grid, handleCellClick }) => {
       {grid.map((row, ri) => (
         <Row>
           {row.map((c, ci) => (
-            <div
-              className={"cell" + c}
-              onClick={handleCellClick.bind(this, ri, ci)}
-            >
+            <Cell siblings={c} onClick={handleCellClick.bind(this, ri, ci)}>
               {c}
-            </div>
+            </Cell>
           ))}
         </Row>
       ))}
