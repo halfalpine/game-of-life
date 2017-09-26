@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 
 const UserInput = ({
   settings,
@@ -10,47 +11,137 @@ const UserInput = ({
   handlePauseClick,
   handleResetClick,
   handleStartClick
-}) => (
-  <div className="user-input-container">
-    <h1 className="title">Conway's Game of Life</h1>
-    <form className="user-input-form" onChange={handleInputChange}>
-      <div className="buttons">
-        <div>Generations: {generations}</div>
-        <div>
-          <button onClick={handleStartClick}>Start</button>
-          <button onClick={handlePauseClick}>Pause</button>
-          <button onClick={handleResetClick}>Reset</button>
-        </div>
-      </div>
-      <div className="settings">
-        {Object.keys(settings).map(key => {
-          return (
-            <div className="setting">
-              <label for={key}>
-                {key}
-                <input
-                  type="text"
-                  id={key}
-                  name={key}
-                  value={settings[key]}
-                  onChange={handleInputChange}
-                />
-              </label>
-              <div className="button-arrows">
-                <button name={key} type="button" onClick={handleUpClick}>
-                  &#8679;
-                </button>
-                <button name={key} type="button" onClick={handleDownClick}>
-                  &#8681;
-                </button>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-    </form>
-  </div>
-);
+}) => {
+  const UserInputContainer = styled.div`
+  width: 80%;
+  margin: 30px auto;
+  padding: 30px 0;
+  background: white;
+  box-shadow: 6px 6px 10px -6px;
+  font-size: 18px;
+}
+
+  button {
+    padding: 0;
+    margin-left: 2px;
+    height: 45%;
+    width: $user-input-height;
+    color: $btn-color;
+    background: $btn-background;
+    border: none;
+    &:focus {
+      outline: none;
+    }
+  }
+  `;
+
+  const Title = styled.h1`
+    margin: 10;
+    text-align: center;
+    letter-spacing: 2px;
+  `;
+
+  const UserInputForm = styled.form`
+    display: flex;
+    justify-content: space-evenly;
+  `;
+
+  const Buttons = styled.div`
+    div:first-of-type {
+      text-align: center;
+      text-transform: uppercase;
+    }
+    button {
+      color: $btn-color;
+      background: $btn-background;
+      border: none;
+      text-transform: uppercase;
+      border-right: 1px solid $btn-color;
+      &:last-of-type {
+        border-right: none;
+      }
+    }
+  `;
+
+  const Settings = styled.div`display: flex;`;
+
+  const Setting = styled.div`
+  display: flex;
+  margin-left: 8px;
+  padding-left: 2px;
+  border-top: 1px solid black;
+  border-left: 1px solid black;
+  box-sizing: border-box;
+  overflow: hidden;
+  label {
+    display: block;
+    height: 20px;
+    width: 80px;
+    // line-height: $user-input-height;
+    font-size: 18px;
+    text-transform: uppercase;
+  }
+  input {
+    box-sizing: border-box;
+    // height: $user-input-height;
+
+    width: 80px;
+    margin: 0;
+    padding: 0;
+    font-size: 11px;
+    &:focus {
+      outline: none;
+    }
+  `;
+
+  const ButtonArrows = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+  `;
+
+  return (
+    <UserInputContainer>
+      <Title>Conway's Game of Life</Title>
+      <UserInputForm onChange={handleInputChange}>
+        <Buttons>
+          <div>Generations: {generations}</div>
+          <div>
+            <button onClick={handleStartClick}>Start</button>
+            <button onClick={handlePauseClick}>Pause</button>
+            <button onClick={handleResetClick}>Reset</button>
+          </div>
+        </Buttons>
+        <Settings>
+          {Object.keys(settings).map(key => {
+            return (
+              <Setting>
+                <label for={key}>
+                  {key}
+                  <input
+                    type="text"
+                    id={key}
+                    name={key}
+                    value={settings[key]}
+                    onChange={handleInputChange}
+                  />
+                </label>
+                <ButtonArrows>
+                  <button name={key} type="button" onClick={handleUpClick}>
+                    &#8679;
+                  </button>
+                  <button name={key} type="button" onClick={handleDownClick}>
+                    &#8681;
+                  </button>
+                </ButtonArrows>
+              </Setting>
+            );
+          })}
+        </Settings>
+      </UserInputForm>
+    </UserInputContainer>
+  );
+};
 
 UserInput.propTypes = {
   settings: PropTypes.object,
