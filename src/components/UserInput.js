@@ -25,9 +25,9 @@ const UserInput = ({
     padding: 0;
     margin-left: 2px;
     height: 45%;
-    width: $user-input-height;
-    color: $btn-color;
-    background: $btn-background;
+    width: 20px;
+    color: white;
+    background: black;
     border: none;
     &:focus {
       outline: none;
@@ -52,11 +52,12 @@ const UserInput = ({
       text-transform: uppercase;
     }
     button {
-      color: $btn-color;
-      background: $btn-background;
+      width: 40px;
+      color: white;
+      background: black;
       border: none;
       text-transform: uppercase;
-      border-right: 1px solid $btn-color;
+      border-right: 1px solid white;
       &:last-of-type {
         border-right: none;
       }
@@ -77,14 +78,11 @@ const UserInput = ({
     display: block;
     height: 20px;
     width: 80px;
-    // line-height: $user-input-height;
     font-size: 18px;
     text-transform: uppercase;
   }
   input {
     box-sizing: border-box;
-    // height: $user-input-height;
-
     width: 80px;
     margin: 0;
     padding: 0;
@@ -98,6 +96,9 @@ const UserInput = ({
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
+    button {
+      width: 20px;
+    }
   `;
 
   return (

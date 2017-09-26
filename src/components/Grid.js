@@ -22,7 +22,7 @@ const Grid = ({ grid, handleCellClick }) => {
   const Cell = styled.div`
     display: inline-block;
     flex: 0 0 auto;
-    min-width: $size;
+    min-width: 20px;
     color: rgba(0, 0, 0, 0);
     background: ${props => {
       switch (props.siblings) {
@@ -32,9 +32,11 @@ const Grid = ({ grid, handleCellClick }) => {
           return "rgba(0, 0, 0, 0);";
         case 2:
           return "background: rgba(255, 255, 255, 0.5);";
+        default:
+          return "rgba(0, 0, 0, 0);";
       }
     }}
-    border: 1px solid $border-color;
+    border: 1px solid white;
     box-sizing: border-box;
     user-select: none;
     &:hover {
@@ -46,6 +48,8 @@ const Grid = ({ grid, handleCellClick }) => {
             return "rgba(0, 0, 0, 0);";
           case 2:
             return "background: rgba(255, 255, 255, 0.5);";
+          default:
+            return "rgba(0, 0, 0, 0);";
         }
       }}
     }
