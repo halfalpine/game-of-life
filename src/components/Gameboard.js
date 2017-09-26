@@ -1,5 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
+import styled from "styled-components";
 
 import Grid from "./Grid";
 import ControlPanel from "./ControlPanel";
@@ -17,8 +18,11 @@ const Gameboard = props => {
     handleResetClick,
     handleStartClick
   } = props;
+
+  const Gameboard = styled.div`display: inline-block;`;
+
   return (
-    <div className="game-board">
+    <Gameboard>
       <ControlPanel
         settings={{ length, width, density, speed }}
         generations={generations}
@@ -27,7 +31,7 @@ const Gameboard = props => {
         handleStartClick={handleStartClick}
       />
       <Grid grid={grid} handleCellClick={handleCellClick} />
-    </div>
+    </Gameboard>
   );
 };
 
