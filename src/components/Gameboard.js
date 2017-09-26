@@ -31,6 +31,17 @@ const Gameboard = props => {
   );
 };
 
-Gameboard.propTypes = {};
+Gameboard.propTypes = {
+  grid: PropTypes.array.isRequired,
+  length: PropTypes.number.isRequired,
+  width: PropTypes.number.isRequired,
+  density: PropTypes.number.isRequired,
+  speed: PropTypes.number.isRequired,
+  generations: PropTypes.number.isRequired,
+  handleCellClick: PropTypes.func.isRequired,
+  handlePauseClick: PropTypes.func.isRequired,
+  handleResetClick: PropTypes.func.isRequired,
+  handleStartClick: PropTypes.func.isRequired
+};
 
 export default Gameboard;
