@@ -76,7 +76,7 @@ class Container extends Component {
   }
 
   tick() {
-    const { grid, length, isPaused } = this.state;
+    const { grid, isPaused } = this.state;
     const nextGeneration = this.state.generations + 1;
     const oldGrid = grid.map((row, ri, g) =>
       row.map((s, si) => (row[si] > 0 ? 1 : 0))
@@ -97,7 +97,7 @@ class Container extends Component {
               : 0;
           const currRowTotal = (g[ri][si - 1] || 0) + (g[ri][si + 1] || 0);
           const nextRowTotal =
-            ri + 1 < length
+            ri + 1 < row.length
               ? (g[ri + 1][si - 1] || 0) +
                 g[ri + 1][si] +
                 (g[ri + 1][si + 1] || 0)
