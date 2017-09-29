@@ -8,8 +8,8 @@ class Container extends Component {
 
     this.state = {
       grid: [],
-      length: 25,
-      width: 25,
+      length: 10,
+      width: 10,
       density: 40,
       speed: 1000,
       generations: 1,
@@ -89,8 +89,6 @@ class Container extends Component {
 
   // Grid control functions
   seedGrid(length, width, density) {
-    // const generateRandomSquare = () => Math.floor(Math.random() * 100);
-
     const grid = Array.from({ length }, () =>
       new Array(width).fill(0)
     ).map(row =>
@@ -121,7 +119,7 @@ class Container extends Component {
               : 0;
           const currRowTotal = (g[ri][si - 1] || 0) + (g[ri][si + 1] || 0);
           const nextRowTotal =
-            ri + 1 < row.length
+            ri + 1 < g.length
               ? (g[ri + 1][si - 1] || 0) +
                 g[ri + 1][si] +
                 (g[ri + 1][si + 1] || 0)
