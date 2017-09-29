@@ -54,7 +54,10 @@ Gameboard.propTypes = {
   handleCellClick: PropTypes.func.isRequired,
   handlePauseClick: PropTypes.func.isRequired,
   handleResetClick: PropTypes.func.isRequired,
-  handleStartClick: PropTypes.func.isRequired
+  handleStartClick: PropTypes.func.isRequired,
+  handleInputChange: PropTypes.func.isRequired,
+  handleUpClick: PropTypes.func.isRequired,
+  handleDownClick: PropTypes.func.isRequired
 };
 
 export default Gameboard;

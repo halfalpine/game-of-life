@@ -32,9 +32,17 @@ export default class ControlPanel extends Component {
 }
 
 ControlPanel.propTypes = {
-  settings: PropTypes.object.isRequired,
+  settings: PropTypes.shape({
+    length: PropTypes.number.isRequired,
+    width: PropTypes.number.isRequired,
+    density: PropTypes.number.isRequired,
+    speed: PropTypes.number.isRequired
+  }),
   generations: PropTypes.number.isRequired,
   handlePauseClick: PropTypes.func.isRequired,
   handleResetClick: PropTypes.func.isRequired,
-  handleStartClick: PropTypes.func.isRequired
+  handleStartClick: PropTypes.func.isRequired,
+  handleInputChange: PropTypes.func.isRequired,
+  handleUpClick: PropTypes.func.isRequired,
+  handleDownClick: PropTypes.func.isRequired
 };

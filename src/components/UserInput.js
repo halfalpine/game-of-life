@@ -145,7 +145,12 @@ const UserInput = ({
 };
 
 UserInput.propTypes = {
-  settings: PropTypes.object,
+  settings: PropTypes.shape({
+    length: PropTypes.number.isRequired,
+    width: PropTypes.number.isRequired,
+    density: PropTypes.number.isRequired,
+    speed: PropTypes.number.isRequired
+  }),
   generations: PropTypes.number,
   handleInputChange: PropTypes.func,
   handleUpClick: PropTypes.func,
