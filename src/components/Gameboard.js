@@ -22,7 +22,10 @@ const Gameboard = props => {
     handleInputChange
   } = props;
 
-  const Gameboard = styled.div`display: inline-block;`;
+  const Gameboard = styled.div`
+    display: inline-block;
+    min-width: 100%;
+  `;
 
   return (
     <Gameboard>

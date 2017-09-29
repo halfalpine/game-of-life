@@ -8,8 +8,8 @@ class Container extends Component {
 
     this.state = {
       grid: [],
-      length: 10,
-      width: 10,
+      length: 25,
+      width: 25,
       density: 40,
       speed: 1000,
       generations: 1,

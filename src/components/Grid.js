@@ -4,7 +4,7 @@ import styled from "styled-components";
 
 const Grid = ({ grid, handleCellClick }) => {
   const Grid = styled.div`
-    width: 80%;
+    width: ${props => props.width * 20 + 100}
     margin: auto;
     padding: 30px 0;
     background: white;
