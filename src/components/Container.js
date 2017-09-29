@@ -17,7 +17,15 @@ class Container extends Component {
       isPaused: false
     };
 
+    // Form controls
+    this.handleUpClick = this.handleUpClick.bind(this);
+    this.handleDownClick = this.handleDownClick.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
+
+    // Cell controls
     this.handleCellClick = this.handleCellClick.bind(this);
+
+    // Start, stop, & reset controls
     this.handlePauseClick = this.handlePauseClick.bind(this);
     this.handleResetClick = this.handleResetClick.bind(this);
     this.handleStartClick = this.handleStartClick.bind(this);
@@ -33,6 +41,7 @@ class Container extends Component {
     clearInterval(this.timerID);
   }
 
+  // Cell click handler
   handleCellClick(yCoord, xCoord) {
     let { grid } = this.state;
 
@@ -40,12 +49,13 @@ class Container extends Component {
     this.setState({ grid });
   }
 
+  // Control Panel button handlers
   handlePauseClick(e) {
     e.preventDefault();
     this.setState({ isPaused: true });
   }
-
-  handleResetClick(length, width, density, speed) {
+  handleResetClick() {
+    const { length, width, density, speed } = this.state;
     console.log(length, width, density, speed);
     clearInterval(this.timerID);
     this.seedGrid(length, width, density);
@@ -56,12 +66,28 @@ class Container extends Component {
     });
     setTimeout(() => (this.timerID = setInterval(() => this.tick(), speed)));
   }
-
   handleStartClick(e) {
     e.preventDefault();
     this.setState({ isPaused: false });
   }
 
+  // Control Panel text handlers
+  handleUpClick(e) {
+    const key = e.target.name;
+    const increment = this.state[key] + 1;
+    this.setState({ [key]: increment });
+  }
+  handleDownClick(e) {
+    const key = e.target.name;
+    const decrement = this.state[key] - 1;
+    this.setState({ [key]: decrement });
+  }
+  handleInputChange(e) {
+    const key = e.target.name;
+    this.setState({ [key]: Number(e.target.value) });
+  }
+
+  // Grid control functions
   seedGrid(length, width, density) {
     // const generateRandomSquare = () => Math.floor(Math.random() * 100);
 
@@ -72,9 +98,7 @@ class Container extends Component {
     );
 
     this.setState({ grid });
-    console.log(grid);
   }
-
   tick() {
     const { grid, isPaused } = this.state;
     const nextGeneration = this.state.generations + 1;
@@ -125,6 +149,9 @@ class Container extends Component {
         handlePauseClick={this.handlePauseClick}
         handleResetClick={this.handleResetClick}
         handleStartClick={this.handleStartClick}
+        handleUpClick={this.handleUpClick}
+        handleDownClick={this.handleDownClick}
+        handleInputChange={this.handleInputChange}
       />
     );
   }

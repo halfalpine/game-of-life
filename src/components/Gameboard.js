@@ -16,7 +16,10 @@ const Gameboard = props => {
     handleCellClick,
     handlePauseClick,
     handleResetClick,
-    handleStartClick
+    handleStartClick,
+    handleUpClick,
+    handleDownClick,
+    handleInputChange
   } = props;
 
   const Gameboard = styled.div`display: inline-block;`;
@@ -29,6 +32,9 @@ const Gameboard = props => {
         handlePauseClick={handlePauseClick}
         handleResetClick={handleResetClick}
         handleStartClick={handleStartClick}
+        handleUpClick={handleUpClick}
+        handleDownClick={handleDownClick}
+        handleInputChange={handleInputChange}
       />
       <Grid grid={grid} handleCellClick={handleCellClick} />
     </Gameboard>
