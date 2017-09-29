@@ -13,15 +13,17 @@ const Grid = ({ grid, handleCellClick }) => {
   `;
 
   const Row = styled.div`
-    display: inline-block;
+    display: table;
+    margin: auto;
     margin-top: -4px;
     background-image: linear-gradient(to right, #84fab0 0%, #8fd3f4 100%);
     overflow: hidden;
+
+    border: 2px solid black;
   `;
 
   const Cell = styled.div`
     display: inline-block;
-    flex: 0 0 auto;
     min-width: 20px;
     color: rgba(0, 0, 0, 0);
     background: ${props => {
